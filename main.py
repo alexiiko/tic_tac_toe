@@ -1,0 +1,42 @@
+import pygame as pg
+from sys import exit
+from settings import FPS, SCREEN
+from grid import draw_rects
+from mouse import mouse
+
+
+class Game:
+    def __init__(self):
+        pg.init()
+        pg.font.init()
+
+    def draw_window(self):
+        SCREEN.fill("#97C4C0")
+        mouse.update()
+        draw_rects()
+
+    def check_events(self):
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                exit()
+            if event.type == pg.KEYDOWN:
+                if pg.K_ESCAPE:
+                    pg.quit()
+                    exit()
+
+    def run(self):
+        while True:
+            self.check_events()
+            self.update()
+            self.draw_window()
+
+    def update(self):
+        pg.display.update()
+        clock = pg.time.Clock()
+        clock.tick(FPS)
+
+
+if __name__ == "__main__":
+    game = Game()
+    game.run()
