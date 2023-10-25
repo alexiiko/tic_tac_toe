@@ -2,7 +2,7 @@ import pygame as pg
 from sys import exit
 from settings import FPS, SCREEN
 from grid import draw_rects
-from mouse import mouse
+from game_logic import game_logic
 
 
 class Game:
@@ -11,7 +11,7 @@ class Game:
         pg.font.init()
 
     def draw_window(self):
-        mouse.update()
+        game_logic.update()
         draw_rects()
 
     def check_events(self):
@@ -20,7 +20,7 @@ class Game:
                 pg.quit()
                 exit()
             if event.type == pg.KEYDOWN:
-                if pg.K_ESCAPE:
+                if event.key == pg.K_ESCAPE:
                     pg.quit()
                     exit()
 
