@@ -11,7 +11,6 @@ class Game:
         pg.font.init()
 
     def draw_window(self):
-        SCREEN.fill("#97C4C0")
         mouse.update()
         draw_rects()
 
@@ -26,6 +25,7 @@ class Game:
                     exit()
 
     def run(self):
+        SCREEN.fill("#97C4C0")
         while True:
             self.check_events()
             self.update()
